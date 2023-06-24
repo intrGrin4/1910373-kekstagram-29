@@ -20,3 +20,24 @@ const checkExtractDigits = (number) => {
   return parseInt(result, 10);
 };
 checkExtractDigits('кефир, батона');
+
+// Задачка про рабочий день
+
+const createTimeMinutes = (time) => {
+  const sample = time.split(':');
+  const hours = parseInt(sample[0], 10);
+  const minutes = parseInt(sample[1], 10);
+  return (hours * 60) + minutes;
+};
+const createWorkTime = (startWork, endWork, startMeeting, duration) => {
+  const startDay = createTimeMinutes(startWork);
+  const endDay = createTimeMinutes(endWork);
+  const meeting = createTimeMinutes(startMeeting);
+  const timeLeft = endDay - meeting;
+
+  if (timeLeft >= duration && meeting >= startDay) {
+    return true;
+  }
+  return false;
+};
+createWorkTime('08:00', '17:30', '14:00', 90);
