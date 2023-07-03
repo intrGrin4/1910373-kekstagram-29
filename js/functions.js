@@ -23,16 +23,14 @@ checkExtractDigits('кефир, батона');
 
 // Задачка про рабочий день
 
-const createTimeMinutes = (time) => {
-  const sample = time.split(':');
-  const hours = parseInt(sample[0], 10);
-  const minutes = parseInt(sample[1], 10);
-  return (hours * 60) + minutes;
+const getMinutes = (time) => {
+  const times = time.split(':');
+  return Number(times[0] * 60) + Number(times[1]);
 };
-const createWorkTime = (startWork, endWork, startMeeting, duration) => {
-  const startDay = createTimeMinutes(startWork);
-  const endDay = createTimeMinutes(endWork);
-  const meeting = createTimeMinutes(startMeeting);
+const isWorkingDay = (startWork, endWork, startMeeting, duration) => {
+  const startDay = getMinutes(startWork);
+  const endDay = getMinutes(endWork);
+  const meeting = getMinutes(startMeeting);
   const timeLeft = endDay - meeting;
 
   if (timeLeft >= duration && meeting >= startDay) {
@@ -40,4 +38,4 @@ const createWorkTime = (startWork, endWork, startMeeting, duration) => {
   }
   return false;
 };
-createWorkTime('08:00', '17:30', '14:00', 90);
+isWorkingDay('08:00', '17:30', '14:00', 90);
