@@ -1,4 +1,4 @@
-import {getRandomArrayElement, getRandomNumber} from './util.js';
+import { getRandomArrayElement, getRandomNumber } from './util.js';
 
 const DESCRIPTION_PHOTO = [
   'Бассейн', 'Как же круто тут кормят', 'Лазурное море', 'Красивый купальник', 'Вкусная еда', 'Крутая машина', 'Освежающие фрукты',
@@ -33,7 +33,7 @@ const MESSAGES = [
 const NAME = ['Артём', 'Никита', 'Стас', 'Всеволод', 'Андрей', 'Освальд', 'Мишель', 'Мияги', 'Олоф', 'Гио'];
 
 const createMessage = () => {
-  const messages = Array.from({length: getRandomNumber(1, 2)}, () => getRandomArrayElement(MESSAGES));
+  const messages = Array.from({ length: getRandomNumber(1, 2) }, () => getRandomArrayElement(MESSAGES));
   return Array.from(new Set(messages)).join(' ');
 };
 
@@ -49,8 +49,9 @@ const createDescription = () => ({
   url: `photos/${integerId++}.jpg`,
   description: getRandomArrayElement(DESCRIPTION_PHOTO),
   likes: getRandomNumber(likes.min, likes.max),
-  comments: Array.from({length: getRandomNumber(counter.min, counter.max)}, createComment)
+  comments: Array.from({ length: getRandomNumber(counter.min, counter.max) }, createComment)
 });
 
-const createCards = () => Array.from({length: PHOTOS}, createDescription);
-export {createCards};
+const createCards = () => Array.from({ length: PHOTOS }, createDescription);
+
+export { createCards };
