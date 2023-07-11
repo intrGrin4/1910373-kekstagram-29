@@ -1,7 +1,7 @@
 import { getRandomArrayElement, getRandomNumber } from './util.js';
 
 const DESCRIPTION_PHOTO = [
-  'Бассейн', 'Как же круто тут кормят', 'Лазурное море', 'Красивый купальник', 'Вкусная еда', 'Крутая машина', 'Освежающие фрукты',
+  'Бассейн', 'Дорога к пляжу', 'Лазурное море', 'Красивый купальник', 'Вкусная еда', 'Крутая машина', 'Освежающие фрукты',
   'Вкусный коктейль', 'Пролетающий самолет', 'Дорогая обувь', 'Жаркое солнце', 'Спортивная машина', 'Вкусная форель',
   'Котэ-сашими', 'Nike Будущего', 'Высота птичьего полета', 'Хор', 'Ретро-авто', 'Ночные светильники', 'Пальмы на фоне города',
   'Диетический салат', 'Красивый закат', 'Хмурый крабик', 'Концерт любимой группы', 'Сафари преключение'];
@@ -9,19 +9,20 @@ const DESCRIPTION_PHOTO = [
 const PHOTOS = 25;
 let integerId = 1;
 let commentsId = 1;
+let descriptionId = 1;
 const likes = {
-  min: 15,
-  max: 200
+  MIN: 15,
+  MAX: 200
 };
 
 const avatars = {
-  min: 1,
-  max: 6
+  MIN: 1,
+  MAX: 6
 };
 
 const counter = {
-  min: 0,
-  max: 30
+  MIN: 0,
+  MAX: 30
 };
 
 const MESSAGES = [
@@ -39,7 +40,7 @@ const createMessage = () => {
 
 const createComment = () => ({
   id: commentsId++,
-  avatar: `img/${getRandomNumber(avatars.min, avatars.max)}.svg`,
+  avatar: `img/avatar-${getRandomNumber(avatars.MIN, avatars.MAX)}.svg`,
   message: createMessage(),
   name: getRandomArrayElement(NAME)
 });
@@ -47,11 +48,11 @@ const createComment = () => ({
 const createDescription = () => ({
   id: integerId,
   url: `photos/${integerId++}.jpg`,
-  description: getRandomArrayElement(DESCRIPTION_PHOTO),
-  likes: getRandomNumber(likes.min, likes.max),
-  comments: Array.from({ length: getRandomNumber(counter.min, counter.max) }, createComment)
+  description: DESCRIPTION_PHOTO[(descriptionId++) - 1],
+  likes: getRandomNumber(likes.MIN, likes.MAX),
+  comments: Array.from({ length: getRandomNumber(counter.MIN, counter.MAX) }, createComment)
 });
 
 const createCards = () => Array.from({ length: PHOTOS }, createDescription);
 
-export { createCards };
+export { createCards, createDescription };
