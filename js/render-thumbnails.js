@@ -1,4 +1,5 @@
 import { createCards } from './data.js';
+import { renderBigPicture } from './render-full-image.js';
 
 const fragment = document.createDocumentFragment();
 const picture = document.querySelector('#picture').content.querySelector('.picture');
@@ -13,9 +14,12 @@ const createThumbnails = (item) => {
   cloneImg.alt = item.description;
   pictureClone.querySelector('.picture__likes').textContent = item.likes;
   pictureClone.querySelector('.picture__comments').textContent = item.comments.length;
+  pictureClone.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    renderBigPicture(item);
+  });
   fragment.append(pictureClone);
 };
-
 
 const renderThumbnails = () => {
   data.forEach((item) => createThumbnails(item));
