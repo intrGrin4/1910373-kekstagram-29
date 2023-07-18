@@ -1,3 +1,4 @@
+import { isEscapeKey } from '../utils/util.js';
 
 const COMMENT_COUNTER = 5;
 
@@ -49,7 +50,7 @@ function buttonCloseClickHandler(evt) {
 }
 
 function documentKeydownHandler(evt) {
-  if (evt.key === 'Escape' && !evt.target.closest('.social__footer-text')) {
+  if (isEscapeKey(evt) && !evt.target.closest('.social__footer-text')) {
     evt.preventDefault();
     closeModal();
   }
