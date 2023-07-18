@@ -1,4 +1,4 @@
-import { getRandomArrayElement, getRandomNumber } from './util.js';
+import { getRandomArrayElement, getRandomNumber } from '../utils/util.js';
 
 const DESCRIPTION_PHOTO = [
   'Бассейн', 'Дорога к пляжу', 'Лазурное море', 'Красивый купальник', 'Вкусная еда', 'Крутая машина', 'Освежающие фрукты',
