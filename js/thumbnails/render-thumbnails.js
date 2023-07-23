@@ -1,9 +1,7 @@
-import { createCards } from './data.js';
 import { renderBigPicture } from './render-full-image.js';
 
 const fragment = document.createDocumentFragment();
 const picture = document.querySelector('#picture').content.querySelector('.picture');
-const data = createCards();
 const picturesContainer = document.querySelector('.pictures');
 
 const createThumbnails = (item) => {
@@ -21,7 +19,7 @@ const createThumbnails = (item) => {
   fragment.append(pictureClone);
 };
 
-const renderThumbnails = () => {
+const renderThumbnails = (data) => {
   data.forEach((item) => createThumbnails(item));
   picturesContainer.append(fragment);
 };
