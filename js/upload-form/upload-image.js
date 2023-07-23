@@ -73,7 +73,6 @@ const setButtonState = (state) => {
   submitButton.disabled = state;
 };
 
-// функции сообщений об ошибке/успехе
 const uploadSuccess = () => {
   closeUploadForm();
   renderMessage(MESSAGE_STATUS.success, HEADER_TEXT.success, BUTTON_TEXT.success);
@@ -85,7 +84,6 @@ const uploadError = () => {
   setButtonState(false);
 };
 
-//обработчик отправки формы
 const uploadFormSubmitHandler = (evt) => {
   evt.preventDefault();
   if (pristineValidate()) {
