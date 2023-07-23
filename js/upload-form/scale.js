@@ -15,7 +15,6 @@ const scaleImageChange = (value) => {
   scaleControlValue.value = `(${value})%`;
 };
 
-
 const smallerClickHandler = (evt) => {
   evt.preventDefault();
   if (currentScale > SCALE_MIN) {

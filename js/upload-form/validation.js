@@ -41,7 +41,6 @@ const changeHashtagSame = (value) => {
 const pristineValidate = () => pristine.validate();
 const pristineReset = () => pristine.reset();
 
-
 const initValidator = () => {
   pristine.addValidator(textDescription, checkDescriptionLength, INVALID_COMMENT_LENGTH, 1, true);
   pristine.addValidator(hashtag, changeHashtagCorrect, INVALID_HASHTAG_TEXT_CORRECT, 1, true);

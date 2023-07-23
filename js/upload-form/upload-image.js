@@ -37,7 +37,6 @@ const effectsPreviewImages = document.querySelectorAll('.effects__preview');
 
 const effectsListChangeHandler = (evt) => initEffects(evt.target.value);
 
-
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
