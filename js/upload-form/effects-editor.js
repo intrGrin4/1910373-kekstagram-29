@@ -48,7 +48,6 @@ const slider = document.querySelector('.effect-level__slider');
 const imagePreview = document.querySelector('.img-upload__preview img');
 const imageUploadEffect = document.querySelector('.img-upload__effect-level');
 
-
 const setContainerState = (value) => {
   if (value === 'none' || !value) {
     imageUploadEffect.classList.add('hidden');
@@ -80,7 +79,7 @@ const createSlider = (value) => {
 };
 
 const initEffects = (value) => {
-  if(slider.noUiSlider) {
+  if (slider.noUiSlider) {
     slider.noUiSlider.destroy();
   }
   createSlider(value);

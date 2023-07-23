@@ -37,7 +37,6 @@ const effectsPreviewImages = document.querySelectorAll('.effects__preview');
 
 const effectsListChangeHandler = (evt) => initEffects(evt.target.value);
 
-
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
@@ -73,7 +72,6 @@ const setButtonState = (state) => {
   submitButton.disabled = state;
 };
 
-// функции сообщений об ошибке/успехе
 const uploadSuccess = () => {
   closeUploadForm();
   renderMessage(MESSAGE_STATUS.success, HEADER_TEXT.success, BUTTON_TEXT.success);
@@ -85,7 +83,6 @@ const uploadError = () => {
   setButtonState(false);
 };
 
-//обработчик отправки формы
 const uploadFormSubmitHandler = (evt) => {
   evt.preventDefault();
   if (pristineValidate()) {
