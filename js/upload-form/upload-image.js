@@ -1,5 +1,5 @@
 import { isEscapeKey } from '../utils/util.js';
-import { initScaleImg, resetScale } from '../upload-form/scale.js';
+import { initScale, resetScale } from './scale.js';
 import { initEffects } from './effects-editor.js';
 import { initValidator, pristineValidate, pristineReset } from './validation.js';
 import { sendData } from '../utils/api.js';
@@ -36,6 +36,7 @@ const imagePreview = document.querySelector('.img-upload__preview img');
 const effectsPreviewImages = document.querySelectorAll('.effects__preview');
 
 const effectsListChangeHandler = (evt) => initEffects(evt.target.value);
+
 
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
@@ -102,9 +103,9 @@ function documentKeydownHandler(evt) {
   }
 }
 
-const uploadFormImage = () => {
+const initUploadForm = () => {
   initValidator();
-  initScaleImg();
+  initScale();
   initEffects(currentEffectValue);
   effectsList.addEventListener('change', effectsListChangeHandler);
   uploadInput.addEventListener('change', uploadInputChangeHandler);
@@ -112,4 +113,4 @@ const uploadFormImage = () => {
   imgUploadCancel.addEventListener('click', imgUploadCancelClickHandler);
 };
 
-export { uploadFormImage };
+export { initUploadForm };

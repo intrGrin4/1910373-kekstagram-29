@@ -35,7 +35,7 @@ const EFFECTS = {
     unit: ''
   },
   default: {
-    name: 'default',
+    name: 'none',
     min: 1,
     max: 1,
     step: 1,
@@ -43,18 +43,18 @@ const EFFECTS = {
   }
 };
 
-const effectLevelValue = document.querySelector('.effect-level__value');
+const imagePreview = document.querySelector('.img-upload__preview');
+const sliderContainer = document.querySelector('.img-upload__effect-level');
 const slider = document.querySelector('.effect-level__slider');
-const imagePreview = document.querySelector('.img-upload__preview img');
-const imageUploadEffect = document.querySelector('.img-upload__effect-level');
+const effectSaturation = document.querySelector('.effect-level__value');
 
 const setContainerState = (value) => {
   if (value === 'none' || !value) {
-    imageUploadEffect.classList.add('hidden');
+    sliderContainer.classList.add('hidden');
     imagePreview.style.filter = 'none';
     return;
   }
-  imageUploadEffect.classList.remove('hidden');
+  sliderContainer.classList.remove('hidden');
 };
 
 const createSlider = (value) => {
@@ -71,10 +71,11 @@ const createSlider = (value) => {
     start: max,
     connect: 'lower'
   });
+
   slider.noUiSlider.on('update', () => {
     const saturation = slider.noUiSlider.get();
     imagePreview.style.filter = `${name}(${saturation}${unit})`;
-    effectLevelValue.value = saturation;
+    effectSaturation.value = saturation;
   });
 };
 

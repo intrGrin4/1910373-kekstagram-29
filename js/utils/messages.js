@@ -18,7 +18,7 @@ const createMessage = (type, text, buttonText) => (
 </section>`
 );
 
-const onDocumentKeydown = (evt) => {
+const documentKeydownHandler = (evt) => {
   if (isEscapeKey(evt)) {
     evt.stopPropagation();
     evt.preventDefault();
@@ -28,7 +28,7 @@ const onDocumentKeydown = (evt) => {
 
 function closeMessage() {
   message.remove();
-  document.removeEventListener('keydown', onDocumentKeydown, { capture: true });
+  document.removeEventListener('keydown', documentKeydownHandler, { capture: true });
 
   if (!isOpen) {
     document.body.classList.remove('modal-open');
@@ -47,7 +47,7 @@ const renderMessage = (type, text, buttonText) => {
     }
   });
 
-  document.addEventListener('keydown', onDocumentKeydown, { capture: true });
+  document.addEventListener('keydown', documentKeydownHandler, { capture: true });
 
   if (buttonText) {
     message.querySelector(`.${type}__button`).addEventListener('click', closeMessage);

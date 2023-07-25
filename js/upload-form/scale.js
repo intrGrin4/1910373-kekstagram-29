@@ -1,40 +1,44 @@
 const SCALE_STEP = 25;
-const SCALE_MIN = 25;
-const SCALE_MAX = 100;
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
 const DIVIDER = 100;
 
 const scaleControlSmaller = document.querySelector('.scale__control--smaller');
 const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
-const scaleControlImage = document.querySelector('.img-upload__preview img');
+const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
-let currentScale = SCALE_MAX;
+let currentScale = MAX_SCALE;
 
-const scaleImageChange = (value) => {
-  scaleControlImage.style.transform = `scale(${value / DIVIDER})`;
-  scaleControlValue.value = `(${value})%`;
+const changeScale = (value) => {
+  imgUploadPreview.style.transform = `scale(${value / DIVIDER})`;
+  scaleControlValue.value = `${value}%`;
 };
 
-const smallerClickHandler = (evt) => {
+const scaleControlSmallerClickHandler = (evt) => {
   evt.preventDefault();
-  if (currentScale > SCALE_MIN) {
+  if (currentScale > MIN_SCALE) {
     currentScale -= SCALE_STEP;
-    scaleImageChange(currentScale);
+    changeScale(currentScale);
   }
 };
-const biggerClickHandler = (evt) => {
+
+const scaleControlBiggerClickHandler = (evt) => {
   evt.preventDefault();
-  if (currentScale < SCALE_MAX) {
+  if (currentScale < MAX_SCALE) {
     currentScale += SCALE_STEP;
-    scaleImageChange(currentScale);
+    changeScale(currentScale);
   }
 };
 
-const initScaleImg = () => {
-  scaleControlSmaller.addEventListener('click', smallerClickHandler);
-  scaleControlBigger.addEventListener('click', biggerClickHandler);
+const initScale = () => {
+  scaleControlSmaller.addEventListener('click', scaleControlSmallerClickHandler);
+  scaleControlBigger.addEventListener('click', scaleControlBiggerClickHandler);
 };
 
-const resetScale = () => scaleImageChange(SCALE_MAX);
+const resetScale = () => {
+  currentScale = MAX_SCALE;
+  changeScale(MAX_SCALE);
+};
 
-export { initScaleImg, resetScale };
+export { initScale, resetScale };
