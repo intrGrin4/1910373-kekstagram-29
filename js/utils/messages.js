@@ -26,10 +26,6 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-const onCloseButtonClick = () => {
-  closeMessage();
-};
-
 function closeMessage() {
   message.remove();
   document.removeEventListener('keydown', onDocumentKeydown, { capture: true });
@@ -54,7 +50,7 @@ const renderMessage = (type, text, buttonText) => {
   document.addEventListener('keydown', onDocumentKeydown, { capture: true });
 
   if (buttonText) {
-    message.querySelector(`.${type}__button`).addEventListener('click', onCloseButtonClick);
+    message.querySelector(`.${type}__button`).addEventListener('click', closeMessage);
   }
 
   if (!document.body.classList.contains('modal-open')) {
