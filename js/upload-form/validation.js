@@ -18,23 +18,23 @@ const pristine = new Pristine(uploadForm, {
 
 const checkDescriptionLength = (value) => value.length <= COMMENTS_MAX_LENGTH;
 
-const createHashTags = (value) => value.trim().toLowerCase().split(' ');
+const createHashtags = (value) => value.trim().toLowerCase().split(' ');
 
 const checkHashtagCorrect = (value) => {
   if (!value.length) {
     return true;
   }
-  const hashtags = createHashTags(value);
+  const hashtags = createHashtags(value);
   return hashtags.every((element) => (HASHTAG_TEMPLATE.test(element)));
 };
 
 const checkHashtagsCount = (value) => {
-  const hashtags = createHashTags(value);
+  const hashtags = createHashtags(value);
   return hashtags.length <= HASHTAGS_MAX_COUNT;
 };
 
 const checkHashtagsSame = (value) => {
-  const hashtags = createHashTags(value);
+  const hashtags = createHashtags(value);
   return hashtags.length === new Set(hashtags).size;
 };
 
