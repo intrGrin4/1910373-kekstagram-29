@@ -20,7 +20,7 @@ const checkDescriptionLength = (value) => value.length <= COMMENTS_MAX_LENGTH;
 
 const createHashtags = (value) => value.trim().toLowerCase().split(' ');
 
-const checkHashtagCorrect = (value) => {
+const checkHashtagsCorrect = (value) => {
   if (!value.length) {
     return true;
   }
@@ -43,7 +43,7 @@ const pristineReset = () => pristine.reset();
 
 const initValidator = () => {
   pristine.addValidator(textDescription, checkDescriptionLength, COMMENT_LENGTH_INVALID_TEXT, 1, true);
-  pristine.addValidator(textHashtag, checkHashtagCorrect, HASHTAG_INVALID_TEXT, 1, true);
+  pristine.addValidator(textHashtag, checkHashtagsCorrect, HASHTAG_INVALID_TEXT, 1, true);
   pristine.addValidator(textHashtag, checkHashtagsCount, HASHTAG_INVALID_COUNT_TEXT, 1, true);
   pristine.addValidator(textHashtag, checkHashtagsSame, HASHTAG_INVALID_SAME_TEXT, 1, true);
 };
